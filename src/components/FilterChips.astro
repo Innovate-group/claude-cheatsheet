@@ -1,0 +1,23 @@
+---
+const filters = [
+  { id: 'all', label: 'Todos' },
+  { id: 'favorites', label: '★ Favoritos' },
+  { id: 'command', label: 'Commands' },
+  { id: 'skill', label: 'Skills' },
+  { id: 'plugin', label: 'Plugins' },
+  { id: 'agent', label: 'Agents' },
+];
+---
+<div class="chips-row flex gap-2 overflow-x-auto sm:overflow-x-visible -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth">
+  {filters.map((f, i) => (
+    <button
+      type="button"
+      data-filter={f.id}
+      aria-pressed={i === 0 ? 'true' : 'false'}
+      class={`active:scale-95 flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-medium rounded-full border border-line bg-[var(--card)] hover:border-fg transition-colors font-sans${i === 0 ? ' active' : ''}`}
+    >
+      <span>{f.label}</span>
+      <span class="font-mono text-[11px] opacity-60 tabular-nums" data-filter-count={f.id}>0</span>
+    </button>
+  ))}
+</div>

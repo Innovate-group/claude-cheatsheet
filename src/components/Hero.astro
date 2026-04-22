@@ -1,0 +1,36 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const stats = [
+  { id: 'commands', label: 'commands' },
+  { id: 'skills', label: 'skills' },
+  { id: 'plugins', label: 'plugins' },
+  { id: 'agents', label: 'agents' },
+];
+---
+<header class="relative max-w-6xl mx-auto px-6 pt-12 pb-8 sm:pt-28 sm:pb-16">
+  <ThemeToggle class="absolute right-6 top-6 sm:hidden" />
+  <p class="font-mono text-xs text-muted uppercase tracking-[0.18em] mb-4">~/.claude</p>
+  <h1 class="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.95]">
+    Claude<br class="sm:hidden" /> Cheatsheet<span class="text-accent">.</span>
+  </h1>
+  <p class="mt-5 max-w-xl text-muted text-[15px] leading-relaxed">
+    Todo lo que tenés instalado en tu carpeta <span class="font-mono text-fg">~/.claude</span> —
+    commands, skills, plugins y agents. Buscá, filtrá, recordá.
+  </p>
+
+  <div id="hero-stats" hidden>
+    <dl class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-6 max-w-2xl">
+      {stats.map(s => (
+        <div class="flex flex-col">
+          <dt class="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">{s.label}</dt>
+          <dd class="mt-1 font-mono text-3xl sm:text-4xl font-semibold tabular-nums" id={`count-hero-${s.id}`}>00</dd>
+        </div>
+      ))}
+    </dl>
+
+    <p class="mt-8 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+      Actualizado <span id="hero-when">—</span> · <span id="hero-markets">0 marketplaces</span>
+    </p>
+  </div>
+</header>

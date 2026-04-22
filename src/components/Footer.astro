@@ -1,0 +1,54 @@
+---
+---
+<footer class="max-w-6xl mx-auto px-6 py-16 mt-12 border-t border-line">
+  <div class="flex flex-col sm:flex-row gap-8 sm:items-start">
+    <div class="flex-1 min-w-0 w-full">
+      <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">Generar el tuyo</p>
+      <pre class="mt-3 font-mono text-[12px] bg-[var(--card)] border border-line rounded-md p-3 overflow-x-auto whitespace-pre"><code data-download-cmd>curl -sSL … -o claude-cheatsheet.mjs &amp;&amp; node claude-cheatsheet.mjs &gt; cheatsheet.json</code></pre>
+      <div class="mt-2">
+        <button type="button" data-copy-cmd class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent hover:underline">Copiar comando</button>
+      </div>
+      <p class="mt-3 text-[12px] text-muted">
+        Corré eso en tu Mac y arrastrá el JSON resultante a esta página. Se guarda en tu browser (localStorage), no sale de tu máquina.
+      </p>
+    </div>
+
+    <div class="sm:flex-shrink-0 sm:max-w-xs w-full">
+      <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">Tu cheatsheet</p>
+      <p class="mt-3 text-[13px] text-muted">
+        <span id="footer-status-empty">Todavía no cargaste ningún JSON.</span>
+        <span id="footer-status-loaded" hidden>Mostrando <span class="font-mono text-fg" id="footer-current-name">—</span>.</span>
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <button
+          type="button"
+          data-upload-trigger
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-fg text-bg text-[13px] font-medium hover:opacity-90 transition-opacity"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          Subir JSON
+        </button>
+        <button
+          type="button"
+          id="upload-reset"
+          hidden
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-line text-[13px] font-medium hover:border-fg transition-colors"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+          </svg>
+          Descartar
+        </button>
+      </div>
+      <input id="upload-input" type="file" accept="application/json,.json" hidden />
+    </div>
+  </div>
+
+  <p id="footer-snapshot" class="mt-10 font-mono text-[11px] uppercase tracking-[0.14em] text-muted" hidden>
+    Snapshot · <span id="footer-when">—</span>
+  </p>
+</footer>
